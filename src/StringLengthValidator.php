@@ -23,8 +23,11 @@ class StringLengthValidator extends AbstractValidator implements ValidatorInterf
         $this->errorMessage = str_replace('{max}', $this->max, $errorMessage);
     }
 
-    public function validate(string $value) : bool
+    public function validate(mixed $value) : bool
     {
+        if (!is_string($value)) {
+            return false;
+        }
         $length = strlen($value);
         return $length >= $this->min || $length <= $this->max;
     }
