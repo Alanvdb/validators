@@ -2,16 +2,28 @@
 
 namespace AlanVdb\Validator;
 
-use InvalidArgumentException;
+use AlanVdb\Validator\Definition\ValidatorInterface;
+
+use Throwable;
 
 abstract class AbstractValidator implements ValidatorInterface
 {
     protected string $errorMessage;
+    protected int $errorCode;
 
-    public function getErrorMessage() : string
+    public function __construct(string $errorMessage = 'Invalid value', int $errorCode = 0)
     {
-        return $this->error;
+        $this->errorMessage = $errorMessage;
+        $this->errorCode = $errorCode;
     }
 
-    abstract public function validate(string $value) : bool;
+    public function getErrorMessage(): string
+    {
+        return $this->errorMessage;
+    }
+
+    public function getErrorCode(): int
+    {
+        return $this->errorCode;
+    }
 }

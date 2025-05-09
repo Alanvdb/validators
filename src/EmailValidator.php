@@ -6,12 +6,7 @@ use AlanVdb\Validator\Definition\ValidatorInterface;
 
 class EmailValidator extends AbstractValidator implements ValidatorInterface
 {
-    public function __construct(string $errorMessage = 'must be a valid email address')
-    {
-        $this->errorMessage = $errorMessage;
-    }
-
-    public function validate(string $value) : bool
+    public function validate(mixed $value) : bool
     {
         return filter_var($value, FILTER_VALIDATE_EMAIL) !== false;
     }

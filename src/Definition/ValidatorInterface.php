@@ -4,7 +4,5 @@ namespace AlanVdb\Validator\Definition;
 
 interface ValidatorInterface
 {
-    public function validate(string $value) : bool;
-
-    public function getErrors() : array;
+    public function validate(mixed $value) : bool;
 }

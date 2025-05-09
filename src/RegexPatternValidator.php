@@ -5,15 +5,17 @@ namespace AlanVdb\Validator;
 use AlanVdb\Validator\Definition\ValidatorInterface;
 use AlanVdb\Validator\Exception\InvalidValidatorParamProvided;
 
-class RegexValidator extends AbstractValidator implements ValidatorInterface
+class RegexPatternValidator extends AbstractValidator implements ValidatorInterface
 {
-    public function __construct(string $regex, string $errorMessage = 'must be a valid email address')
+    protected string $regex;
+
+    public function __construct(string $regex, string $errorMessage = 'must be a valid email address', int $errorCode = 0)
     {
+        parent::__construct($errorMessage, $errorCode);
         if (empty($regex)) {
             throw new InvalidValidatorParamProvided('Regex cannot be empty.');
         }
         $this->regex = $regex;
-        $this->errorMessage = $errorMessage;
     }
 
     public function validate(string $value) : bool
