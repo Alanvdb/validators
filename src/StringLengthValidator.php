@@ -10,7 +10,7 @@ class StringLengthValidator extends AbstractValidator implements ValidatorInterf
     protected int $min;
     protected int $max;
     
-    public function __construct(int $min, int $max, string $errorMessage = 'must be {min} to {max} characters long')
+    public function __construct(int $min, int $max, string $errorMessage = 'must be {min} to {max} characters long', int $code = 0)
     {
         if ($min < 0) {
             throw new InvalidValidatorParamProvided('Minimum cannot be lower than 0.');

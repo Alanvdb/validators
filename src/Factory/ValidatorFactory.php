@@ -14,13 +14,13 @@ class ValidatorFactory implements ValidatorFactoryInterface
         return new EmailValidator($errorMessage, $errorCode);
     }
 
-    public function createRegexPatternValidator(string $errorMessage = 'Invalid value', int $errorCode = 0) : ValidatorInterface
+    public function createRegexPatternValidator(string $regex, string $errorMessage = 'Invalid value', int $errorCode = 0) : ValidatorInterface
     {
-        return new RegexPatternValidator($errorMessage, $errorCode);
+        return new RegexPatternValidator($regex, $errorMessage, $errorCode);
     }
 
-    public function createStringLengthValidator(string $errorMessage = 'Invalid value', int $errorCode = 0) : ValidatorInterface
+    public function createStringLengthValidator(int $min, int $max, string $errorMessage = 'Invalid value', int $errorCode = 0) : ValidatorInterface
     {
-        return new StringLengthValidator($errorMessage, $errorCode);
+        return new StringLengthValidator($min, $max, $errorMessage, $errorCode);
     }
 }
