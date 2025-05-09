@@ -18,8 +18,8 @@ class RegexPatternValidator extends AbstractValidator implements ValidatorInterf
         $this->regex = $regex;
     }
 
-    public function validate(string $value) : bool
+    public function validate(mixed $value) : bool
     {
-        return (bool) preg_match($this->regex, $value);
+        return is_string($value) && (bool) preg_match($this->regex, $value);
     }
 }
