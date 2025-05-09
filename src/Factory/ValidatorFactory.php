@@ -6,6 +6,8 @@ use AlanVdb\Validator\Definition\ValidatorFactoryInterface;
 use AlanVdb\Validator\Definition\ValidatorInterface;
 
 use AlanVdb\Validator\EmailValidator;
+use AlanVdb\Validator\RegexPatternValidator;
+use AlanVdb\Validator\StringLengthValidator;
 
 class ValidatorFactory implements ValidatorFactoryInterface
 {
